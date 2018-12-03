@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from userprofile import views
+from article.views import remark
 
 
 urlpatterns = [
@@ -24,5 +25,6 @@ urlpatterns = [
     path('userprofile/',include('userprofile.urls',namespace='userprofile')),
     path('password-reset/',include('password_reset.urls')),
     path('',views.user_login),
+    path('remark/',remark),
 
 ]
