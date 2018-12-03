@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
+from django.http import *
 # Create your views here.
-from .models import ArticlePost
+from .models import *
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from .forms import ArticlePostForm
+from .forms import *
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate
@@ -15,7 +16,8 @@ import markdown
 def article_list(request):
     if request.user.is_authenticated:
         user_id = request.user.id
-        articles = ArticlePost.objects.filter(author_id=user_id)
+        #articles = ArticlePost.objects.filter(author_id=user_id)
+        articles = ArticlePost.objects.all()
         context = { 'articles':articles }
         return  render(request,'article/list.html',context)
     else:
@@ -27,7 +29,6 @@ def article_list(request):
 #login_required(login_url='/userprofile/login/')
 def article_detail(request,id):
     article = ArticlePost.objects.get(id = id)
-
     article.body = markdown.markdown(article.body,
                                      extensions = [
                                          'markdown.extensions.extra',
@@ -81,4 +82,38 @@ def article_update(request,id):
         article_post_form = ArticlePostForm()
         context = {'article':article,'article_post_form':article_post_form}
         return render(request,'article/update.html',context)
+
+def remark(request):
+    if request.method == "POST":
+        form = RemarkForm(request.POST)
+        if form.is_valid():
+            myremark = Remark()
+            myremark.subject = form.cleaned_data['subject']
+            myremark.mail = form.cleaned_data['mail']
+            myremark.topic = form.cleaned_data['topic']
+            myremark.message = form.cleaned_data['message']
+            myremark.cc_myself = form.cleaned_data['cc_myself']
+            myremark.save()
+    else:
+        form = RemarkForm()
+
+    ctx = {
+        'form':form,
+        'ties':Remark.objects.all()
+    }
+
+    return render(request,'article/message.html',)
+
+def article_own(request):
+    articles = ArticlePost.objects.filter(author_id=request.user.id)
+
+
+    # articles.body = markdown.markdown(articles.body,
+    #                                  extensions = [
+    #                                      'markdown.extensions.extra',
+    #                                      'markdown.extensions.codehilite',
+    #                                      'markdown.extensions.toc',
+    #                                  ])
+    context = {'articles': articles}
+    return  render(request,'article/own.html',context)
 
