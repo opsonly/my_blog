@@ -8,5 +8,5 @@ urlpatterns = [
     path('article-create/',views.article_create,name = 'article_create'),
     path('article-delete/<int:id>/',views.article_delete,name='article_delete'),
     path('article-update/<int:id>/',views.article_update,name = 'article_update'),
-
+    path('article-own/',views.article_own,name='article_own'),
 ]

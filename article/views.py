@@ -29,7 +29,6 @@ def article_list(request):
 #login_required(login_url='/userprofile/login/')
 def article_detail(request,id):
     article = ArticlePost.objects.get(id = id)
-
     article.body = markdown.markdown(article.body,
                                      extensions = [
                                          'markdown.extensions.extra',
@@ -105,4 +104,16 @@ def remark(request):
 
     return render(request,'article/message.html',)
 
+def article_own(request):
+    articles = ArticlePost.objects.filter(author_id=request.user.id)
+
+
+    # articles.body = markdown.markdown(articles.body,
+    #                                  extensions = [
+    #                                      'markdown.extensions.extra',
+    #                                      'markdown.extensions.codehilite',
+    #                                      'markdown.extensions.toc',
+    #                                  ])
+    context = {'articles': articles}
+    return  render(request,'article/own.html',context)
 
