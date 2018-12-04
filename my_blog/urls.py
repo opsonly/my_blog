@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path,include
 from userprofile import views
 from article.views import remark
-
+from message.views import get_message,get_content,message_list
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,5 +26,8 @@ urlpatterns = [
     path('password-reset/',include('password_reset.urls')),
     path('',views.user_login),
     path('remark/',remark),
+    path('form/',get_content),
+    path('message/',get_message,name='message'),
+    path('message-list/',message_list,name='message_list'),
 
 ]
