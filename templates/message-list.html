@@ -1,0 +1,34 @@
+<!-- extends表明此页面继承自 base.html 文件 -->
+{% extends "base.html" %}
+{% load staticfiles %}
+<!-- 写入 base.html 中定义的 title -->
+{% block title %}
+    留言信息
+{% endblock title %}
+<!-- 写入 base.html 中定义的 content -->
+{% block content %}
+<link href="{% static 'bootstrap/css/mlist.css' %}" rel="stylesheet" type="text/css" />
+<!-- 定义放置文章标题的div容器 -->
+<section class="comments">
+<article class="comment">
+  <div class="comment-body">
+  </div>
+</article>
+  <article class="comment">
+      {% for obj in objs %}
+  <a class="comment-img" href="#non">
+    <img src="" alt="" width="50" height="50">
+  </a>
+  <div class="comment-body">
+    <div class="text">
+
+            <p>{{ obj.text}}</p>
+            </div>
+              <p class="attribution">by <a href="#non">{{obj.name}}</a> {{ obj.create_time}}</p>
+            </div>
+        {% endfor %}
+  </article>
+
+</article>
+</section>
+{% endblock content %}
