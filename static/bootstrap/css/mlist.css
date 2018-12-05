@@ -10,6 +10,30 @@ p {
     *zoom: 1;
 }
 
+.box1 {
+    position:absolute;
+    width:500px;
+    height:300px;
+    left:80px;
+    top:14px;
+    color: #1E9FFF;
+    font-weight:bold;
+}
+
+.box2 {
+    position:absolute;
+    width:500px;
+    height:300px;
+    left:360px;
+    top:14px;
+    color: #1E9FFF;
+    font-weight:bold;
+}
+
+.box3 {
+    font-size:12px;
+}
+
 .comment-img {
     float: left;
     margin-right: 33px;
@@ -30,6 +54,8 @@ p {
     border: 1px solid #e5e5e5;
     border-radius: 5px;
     background: #fff;
+    height:120px;
+    width:1700px;
 }
 
 .comment .text p:last-child {
@@ -93,3 +119,4 @@ p {
     -ms-transform: rotate(45deg);
     -o-transform: rotate(45deg);
 }
+
