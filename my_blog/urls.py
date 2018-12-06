@@ -23,11 +23,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('article/',include('article.urls',namespace='article')),
     path('userprofile/',include('userprofile.urls',namespace='userprofile')),
+    path('message/',include('message.urls',namespace='message')),
     path('password-reset/',include('password_reset.urls')),
     path('',views.user_login),
     path('remark/',remark),
     path('form/',get_content),
-    path('message/',get_message,name='message'),
-    path('message-list/',message_list,name='message_list'),
 
 ]

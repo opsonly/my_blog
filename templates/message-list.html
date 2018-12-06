@@ -9,24 +9,47 @@
 {% block content %}
 <link href="{% static 'bootstrap/css/mlist.css' %}" rel="stylesheet" type="text/css" />
 <!-- 定义放置文章标题的div容器 -->
+
+
 <section class="comments">
 <article class="comment">
-  <div class="comment-body">
-  </div>
+  <!--<div class="comment-body">-->
+  <!--</div>-->
 </article>
+      <div class="box1">
+         <p>留言列表: </p>
+      </div>
+    <div class="box2">
+        <a href="/form/"> <p>我要留言:</p></a>
+    </div>
   <article class="comment">
-      {% for obj in objs %}
+   {% for obj in objs %}
   <a class="comment-img" href="#non">
     <img src="" alt="" width="50" height="50">
   </a>
   <div class="comment-body">
-    <div class="text">
-
+      <p class="attribution">&nbsp;<p class="attribution">{{obj.id}}楼 <a href="#non">{{obj.name}}</a></p>
+        <div class="text">
             <p>{{ obj.text}}</p>
-            </div>
-              <p class="attribution">by <a href="#non">{{obj.name}}</a> {{ obj.create_time}}</p>
-            </div>
-        {% endfor %}
+            {% if cuid == obj.id %}
+                {{ comObj.text}}
+            {% endif %}
+
+        </div>
+      <p class="attribution">{{ obj.create_time }} &nbsp;<a href="{% url 'message:reply' obj.id%}"> 回复</a></p>
+      {% if relay %}
+          {% if uid == obj.id %}
+           <div class="">
+               <input type="text">
+                <p><button type="submit" class="box3"><a href="{% url 'message:commit' obj.id%}">提交</a> </button></p>
+           </div>
+
+          {% endif %}
+      {% endif %}
+
+        <HR style= " FILTER: progid:DXImageTransform.Microsoft.Glow ( color= #987cb9 ,strength = 10) " width= "100%" color= #987 cb9 SIZE =1>
+  </div>
+    {% endfor %}
   </article>
 
 </article>
