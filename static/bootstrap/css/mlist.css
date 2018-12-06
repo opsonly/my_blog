@@ -10,6 +10,16 @@ p {
     *zoom: 1;
 }
 
+.hr5{ height:10px;border:none;border-top:10px groove #FF8C00;}
+.hr2{ height:3px;border:none;border-top:3px double #6B8E23;}
+.hr4{ height:10px;border:none;border-top:10px groove #FF8C00;}
+.ncom {
+    padding-left: 16px;
+    border-left: 1px solid #e7e5e5;
+    margin-top: 20px;
+}
+
+
 .box1 {
     position:absolute;
     width:500px;

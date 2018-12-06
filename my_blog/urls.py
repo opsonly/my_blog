@@ -16,17 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from userprofile import views
-from article.views import remark
-from message.views import get_message,get_content,message_list
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('article/',include('article.urls',namespace='article')),
     path('userprofile/',include('userprofile.urls',namespace='userprofile')),
+    path('remark/',include('remark.urls',namespace='remark')),
     path('message/',include('message.urls',namespace='message')),
     path('password-reset/',include('password_reset.urls')),
     path('',views.user_login),
-    path('remark/',remark),
-    path('form/',get_content),
 
 ]
