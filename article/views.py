@@ -11,6 +11,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate
 from django.views.generic.edit import FormView
+from remark.models import Remark,ArticleReply
 import markdown
 
 def article_list(request):
@@ -29,13 +30,21 @@ def article_list(request):
 #login_required(login_url='/userprofile/login/')
 def article_detail(request,id):
     article = ArticlePost.objects.get(id = id)
+    remark = Remark.objects.filter(aid=id)
     article.body = markdown.markdown(article.body,
                                      extensions = [
                                          'markdown.extensions.extra',
                                          'markdown.extensions.codehilite',
                                          'markdown.extensions.toc',
                                      ])
-    context = {'article': article}
+
+    remark = Remark.objects.all()
+    articleReply = ArticleReply.objects.all()
+    context = {
+        'article': article,
+        'remark': remark,
+        'articleReply': articleReply,
+    }
     return  render(request,'article/detail.html',context)
 
 
