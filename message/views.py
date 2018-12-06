@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from django.db import models
 from django.http import HttpResponse
 from django.shortcuts import render,redirect
+from django.urls import reverse
 
 # Create your views here.
 def get_message(request):
@@ -24,22 +25,28 @@ def get_content(request):
             Q_message.text = message
 
             Q_message.save()
-            return HttpResponseRedirect('/message-list/')
+            return HttpResponseRedirect('/message/message-list/')
     else:
         return render(request,'msg.html')
 
 def message_list(request):
     objs = Message.objects.all()
-    context = {'objs':objs}
-    return render(request,'message-list.html',context)
+    comObjs = Commit.objects.all()
+    context = {
+        'comObjs': comObjs,
+        'objs': objs,
+    }
+    return render(request, 'message-list.html', context)
 
 
 def reply(request,id):
     if request.user.is_authenticated:
         uid=id
         relay = 1
+        comObjs = Commit.objects.all()
         objs = Message.objects.all()
         context = {
+            'comObjs': comObjs,
             'relay':relay,
             'objs': objs,
             'uid':uid,
@@ -51,9 +58,11 @@ def reply(request,id):
 
 def commit(request,id):
     if request.method == 'GET':
+
         cuid=id
         objs = Message.objects.all()
         comObjs = Commit.objects.all()
+        print(cuid)
         context = {
             'comObjs':comObjs,
             'cuid': cuid,
@@ -61,5 +70,15 @@ def commit(request,id):
         }
         return render(request,'message-list.html',context)
     else:
-        return HttpResponse("<h2>must get</h2> ")
+        st_commit = Commit()
+        name=request.user
+        text=request.POST.get('text','')
+        st_commit.name = name
+        st_commit.text = text
+        st_commit.mid = id
+        st_commit.save()
+
+        return HttpResponseRedirect(
+            reverse('message:commit',args=(id,))
+        )
 
