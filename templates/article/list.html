@@ -7,6 +7,7 @@
 {% endblock title %}
 <!-- 写入 base.html 中定义的 content -->
 {% block content %}
+<link href="{% static 'bootstrap/css/mlist.css' %}" rel="stylesheet" type="text/css" />
 <!-- 定义放置文章标题的div容器 -->
 <div class="container">
     <div class="row mt-2">
@@ -20,6 +21,9 @@
                 <!-- 摘要 -->
                 <div class="card-body">
                     <p class="card-text">{{ article.body|slice:'100' }}...</p>
+                </div>
+                <div>
+                     <span class="box3" >Time:{{ article.created |date:"Y /m /d"}}</span> &nbsp;&nbsp;<a href="{% url 'article:searchtag' article.category %}">{{ article.category}}</a>
                 </div>
                 <!-- 注脚 -->
                 <div class="card-footer">
