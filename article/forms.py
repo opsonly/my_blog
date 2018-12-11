@@ -15,7 +15,7 @@ from django.db import models
 class ArticlePostForm(forms.ModelForm):
     class Meta:
         model = ArticlePost
-        fields = ('title','body')
+        fields = ('title','body','category')
 
 
 TOPIC_CHOICES=(

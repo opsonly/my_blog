@@ -26,7 +26,6 @@ def article_list(request):
         context = { 'articles':articles }
         return render(request,'article/list.html',context)
 
-
 #login_required(login_url='/userprofile/login/')
 def article_detail(request,id):
     article = ArticlePost.objects.get(id = id)
@@ -54,6 +53,7 @@ def article_create(request):
     if request.method == "POST":
         article_post_form = ArticlePostForm(data=request.POST)
         if article_post_form.is_valid():
+            print(request.POST)
             new_article = article_post_form.save(commit=False)
             user_id = request.user.id
             new_article.author = User.objects.get(id=user_id)
@@ -126,3 +126,12 @@ def article_own(request):
     context = {'articles': articles}
     return  render(request,'article/own.html',context)
 
+
+def searchtag(request,category):
+    tag = category
+    articles = ArticlePost.objects.filter(category=category)
+
+    context = {
+        'articles':articles,
+    }
+    return render(request,'article/tag.html',context)
