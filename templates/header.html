@@ -1,4 +1,5 @@
 <!-- 定义导航栏 -->
+{% load static %}
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
     <!-- 导航栏商标 -->
@@ -23,6 +24,7 @@
               <a class="dropdown-item" href="{% url 'userprofile:logout' %}">退出登录</a>
             </div>
         </li>
+
     <!-- 如果用户未登录，则显示 “登录” -->
         {% else %}
         <li class="nav-item">
@@ -30,6 +32,9 @@
         </li>
     <!-- if 语句在这里结束 -->
            {% endif %}
+          <a href="#" >
+              <img src="{% static 'bootstrap/image/timg.jpeg' %}" height="30" width="30">
+          </a>
       </ul>
     </div>
   </div>
