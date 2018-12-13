@@ -15,6 +15,11 @@
 - 支持文章的多人互动评论
 - 文章标签功能，通过标签搜索相关文章
 
+## 环境
+```python
+python3.7
+```
+
 ## 下载
 ```
 git clone https://github.com/opsonly/my_blog.git
