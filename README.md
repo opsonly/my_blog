@@ -1,5 +1,6 @@
 # my_blog
-> 基于```python3.7```和```django2.1```的多人博客系统
+![](https://img.shields.io/badge/python-3.7-brightgreen.svg) ![](https://img.shields.io/badge/django-2.1-ff69b4.svg) ![](https://img.shields.io/badge/Powered%20by-%40%20opsonly-blue.svg)
+ > 基于```python3.7```和```django2.1```的多人博客系统
 ---
 
 ## 简介
@@ -22,16 +23,18 @@ git clone https://github.com/opsonly/my_blog.git
 ## 安装
 ```python
 pip install -r requirements.txt  #安装所有依赖
-python manage.py makemigrations
+python manage.py makemigrations #数据库修改
 python mange.py migrate
 ```
 ## 使用
 ```python
 python manage.py createsuperuser # 初始化用户名密码
+python manage.py runserver #启动Django服务
+
 http://ip:port/admin #访问后台管理员后台
 
 ```
-> 浏览器中打开http://127.0.0.1:8000/即可访问
+> 浏览器中打开http://127.0.0.1:8000/ 即可访问
 ---
 ## 部分演示
 - 用户注册及登录页
@@ -55,3 +58,8 @@ http://ip:port/admin #访问后台管理员后台
 
 - 网站留言板
 ![](https://note.youdao.com/yws/public/resource/93da14c62d82be64f4b77e58d4d0db42/xmlnote/964E4D1746D64C77A44A7BEBE619F7A3/6701)
+
+---
+
+## 问题相关
+邮箱```opsonly.com@gmail.com```
