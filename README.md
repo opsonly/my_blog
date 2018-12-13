@@ -62,4 +62,4 @@ http://ip:port/admin #访问后台管理员后台
 ---
 
 ## 问题相关
-邮箱```opsonly.com@gmail.com```
+联系邮箱```opsonly.com@gmail.com```
