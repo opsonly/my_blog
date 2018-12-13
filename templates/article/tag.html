@@ -1,9 +1,16 @@
 {% extends "base.html" %}
 {%load staticfiles %}
 {% block title %}
+<<<<<<< HEAD
 {% endblock title%}
 {% block content %}
 <link href="{% static 'bootstrap/css/mlist.css' %}" rel="stylesheet" type="text/css" /><!-- 定义放置文章标题的div容器 -->
+=======
+标签
+{% endblock title%}
+{% block content %}
+<link href="{% static 'bootstrap/css/mlist.css' %}?v1.0.0" rel="stylesheet" type="text/css" /><!-- 定义放置文章标题的div容器 -->
+>>>>>>> develop
 <div class="container">
     <div class="row mt-2">
         {% for article in articles %}
@@ -18,7 +25,14 @@
                     <p class="card-text">{{ article.body|slice:'100' }}...</p>
                 </div>
                 <div>
+<<<<<<< HEAD
                      <span class="box3" >Time:{{ article.created |date:"Y /m /d"}}</span> &nbsp;&nbsp;<a href="{% url 'article:searchtag' article.category%}">{{ article.category}}</a>
+=======
+                     <span class="box3" >Time:{{ article.created |date:"Y /m /d"}}</span> &nbsp;&nbsp;
+                 {% if article.category%}
+                        <a class="post-category post-category-js" href="{% url 'article:searchtag' article.category %}">{{ article.category}}</a>
+                    {% endif %}
+>>>>>>> develop
                 </div>
                 <!-- 注脚 -->
                 <div class="card-footer">

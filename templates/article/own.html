@@ -3,11 +3,12 @@
 {% load staticfiles %}
 <!-- 写入 base.html 中定义的 title -->
 {% block title %}
-    首页
+    我的博客
 {% endblock title %}
 <!-- 写入 base.html 中定义的 content -->
 {% block content %}
 <!-- 定义放置文章标题的div容器 -->
+<link href="{% static 'bootstrap/css/mlist.css' %}?v1.0.1" rel="stylesheet" type="text/css" />
 <div class="container">
     <div class="row mt-2">
         {% for article in articles %}
@@ -20,6 +21,12 @@
                 <!-- 摘要 -->
                 <div class="card-body">
                     <p class="card-text">{{ article.body|slice:'100' }}...</p>
+                </div>
+                <div>
+                     <span class="box3" >Time:{{ article.created |date:"Y /m /d"}}</span>
+                    {% if article.category%}
+                        <a class="post-category post-category-js" href="{% url 'article:searchtag' article.category %}">{{ article.category}}</a>
+                    {% endif %}
                 </div>
                 <!-- 注脚 -->
                 <div class="card-footer">

@@ -11,8 +11,12 @@ p {
 }
 
 .comtag {
+<<<<<<< HEAD
     color: #999999;
     font-size: 20px;
+=======
+    color: #FF0000;
+>>>>>>> develop
 }
 
 
