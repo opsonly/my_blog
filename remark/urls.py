@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-  
 '''
 @author: xiaoshui
-@contact: deamoncao100@gmail.com
+@contact: opsonly.com@gmail.com
 @file: urls.py
 @time: 2018/12/6 16:06
 @desc:

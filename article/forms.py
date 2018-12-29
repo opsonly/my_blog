@@ -2,10 +2,9 @@
 # -*- coding: utf-8 -*-  
 '''
 @author: xiaoshui
-@contact: deamoncao100@gmail.com
+@contact: opsonly.com@gmail.com
 @file: forms.py
 @time: 2018/11/19 16:39
-@desc:
 '''
 
 from django import forms
