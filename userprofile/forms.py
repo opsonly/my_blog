@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-  
 '''
 @author: xiaoshui
-@contact: deamoncao100@gmail.com
+@contact: opsonly.com@gmail.com
 @file: forms.py
 @time: 2018/11/20 10:21
 @desc:
